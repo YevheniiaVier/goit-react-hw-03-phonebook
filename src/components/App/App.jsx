@@ -8,7 +8,10 @@ import { Title } from 'components/Title/Title';
 import { Notification } from 'components/Notification/Notification';
 import { Modal } from 'components/Modal/Modal';
 import { Button } from 'components/ContactForm/Button';
+import { IconButton } from 'components/IconButton/IconButton';
 import noContactImg from '../../images/no-contacts.png';
+import { ReactComponent as AddIcon } from '../../icons/addContact.svg';
+import { ReactComponent as CloseIcon } from '../../icons/close.svg';
 
 import initialContacts from '../../contacts.json';
 import defaultUserImg from '../../images/default.png';
@@ -75,11 +78,15 @@ export class App extends Component {
     const filteredContacts = this.getFilteredContacts();
     return (
       <Container>
-        <Button onClick={this.toggleModal} type="button" text="Open Modal" />
+        <IconButton onClick={this.toggleModal} type="button">
+          <AddIcon width="40" height="40" fill="#29668b" />
+        </IconButton>
         {showModal && (
           <Modal onClose={this.toggleModal}>
             <ContactForm actualContacts={contacts} onSubmit={this.addContact} />
-            <Button onClick={this.toggleModal} text="Close" type="button" />
+            <IconButton onClick={this.toggleModal} type="button">
+              <CloseIcon width="20" height="20" fill="#29668b" />
+            </IconButton>
           </Modal>
         )}
         <Title text="Phonebook" />

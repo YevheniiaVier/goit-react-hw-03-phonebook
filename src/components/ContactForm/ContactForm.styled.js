@@ -1,16 +1,19 @@
 import styled from 'styled-components';
 
 export const StyledForm = styled.form`
+  padding-top: ${p => p.theme.space[6]}px};
   width: 400px;
   display: flex;
   flex-direction: column;
-gap: ${p => p.theme.space[5]}px};
+  gap: ${p => p.theme.space[5]}px};
   :invalid {
     button {
       background-color: ${p => p.theme.colors.darkGrey};
     }
   }
-  margin-bottom: 20px;
+  button {
+    align-self: center;
+  }
 `;
 export const StyledInput = styled.input`
   outline: none;
@@ -45,6 +48,5 @@ export const StyledLabel = styled.label`
 `;
 export const Box = styled.div`
   position: relative;
-  padding: 0:
-
+  padding: 0;
 `;
