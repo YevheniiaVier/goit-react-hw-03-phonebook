@@ -7,7 +7,6 @@ import { Filter } from 'components/Filter/Filter';
 import { Title } from 'components/Title/Title';
 import { Notification } from 'components/Notification/Notification';
 import { Modal } from 'components/Modal/Modal';
-import { Button } from 'components/ContactForm/Button';
 import { IconButton } from 'components/IconButton/IconButton';
 import noContactImg from '../../images/no-contacts.png';
 import { ReactComponent as AddIcon } from '../../icons/addContact.svg';
@@ -29,7 +28,7 @@ export class App extends Component {
       this.setState({ contacts: parsedContacts });
     }
   }
-  componentDidUpdate(prevState) {
+  componentDidUpdate(_, prevState) {
     if (this.state.contacts !== prevState.contacts) {
       localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
     }
@@ -49,6 +48,7 @@ export class App extends Component {
     this.setState(({ contacts }) => ({
       contacts: [...contacts, contact],
     }));
+    this.toggleModal();
   };
 
   deleteContact = contactId => {
@@ -78,13 +78,21 @@ export class App extends Component {
     const filteredContacts = this.getFilteredContacts();
     return (
       <Container>
-        <IconButton onClick={this.toggleModal} type="button">
+        <IconButton
+          onClick={this.toggleModal}
+          type="button"
+          aria-label="Add contact"
+        >
           <AddIcon width="40" height="40" fill="#29668b" />
         </IconButton>
         {showModal && (
           <Modal onClose={this.toggleModal}>
             <ContactForm actualContacts={contacts} onSubmit={this.addContact} />
-            <IconButton onClick={this.toggleModal} type="button">
+            <IconButton
+              onClick={this.toggleModal}
+              type="button"
+              aria-label="Close modal window"
+            >
               <CloseIcon width="20" height="20" fill="#29668b" />
             </IconButton>
           </Modal>

@@ -32,14 +32,6 @@ export const ContactImg = styled.img.attrs(props => ({
   background-color: ${p => p.theme.colors.accentDark}; ;
 `;
 
-export const StyledSvg = styled.svg.attrs(props => ({
-  width: props.width,
-  height: props.height,
-  viewBox: props.viewBox,
-}))`
-  fill: ${p => p.theme.colors.accentDark};
-`;
-
 export const Box = styled.div`
   display: flex;
   align-items: center;
