@@ -12,7 +12,8 @@ import {
   Box,
 } from './ContactForm.styled';
 
-const notify = text => toast(text);
+const notify = text =>
+  toast.error(text, { theme: 'colored', pauseOnHover: true });
 
 export class ContactForm extends Component {
   state = {
@@ -102,7 +103,7 @@ export class ContactForm extends Component {
           </StyledLabel>
         </Box>
         <Button text="Add contact" type="submit" active={false} />
-        <ToastContainer />
+        <ToastContainer autoClose={2000} />
       </StyledForm>
     );
   }
